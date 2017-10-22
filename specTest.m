@@ -1,3 +1,4 @@
+%Spectral Analysis
 
 Fs = 100e3;
 RawPData = csvread('60off.csv');

@@ -1,3 +1,5 @@
+%Find peaks f a signal
+
 close all;
 Frequency = 100e3;%kHz
 RawPData = csvread('60off.csv');

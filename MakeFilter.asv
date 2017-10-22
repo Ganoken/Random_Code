@@ -1,7 +1,6 @@
-%Make Filter for signal with noise.
-%Originally made to remove the effect of power line humming.
-%Sujoy   Created 2017/10
-%Plan implement as function
+
+
+
 
 dbp = designfilt('bandpassiir','FilterOrder',20, ...
     'HalfPowerFrequency1',80,'HalfPowerFrequency2',220, ...
