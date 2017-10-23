@@ -11,3 +11,10 @@ power = abs(Y).^2/n;
 phaseY = unwrap(angle(Y));
 %[pbutt,fbutt] = periodogram(buttLoop,[],[],Fs);
 %plot(fbutt,20*log10(abs(pbutt)),'--')
+
+%bpP = filtfilt(dbp,RawPData);
+%Ybp= fft(bpP);
+%mbp=abs(Ybp);
+%bsP = filtfilt(dbs,bpP);
+%Ybs= fft(bsP);
+%mbs=abs(Ybs);
