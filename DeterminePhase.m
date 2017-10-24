@@ -2,7 +2,7 @@
 %Sujoy created 2017/10
 
 %% initialize and load data
-Frequency = 100e3;%kHz
+Frequency = 100e3;%kHz sampling freq
 RawPData = csvread(''); %Assuming the data is in csv format
 DataCount = length(RawPData); % Get the # of Data 
 MaxT = DataCount/Frequency; % Get the duration of data
@@ -35,16 +35,17 @@ FilteredData2 = ApplyFilter (filter2,FilteredData1); % increase as many times de
 %TimeUse = TimeStamps(TimeStamps < TimeDuration); % need two sec
 %CleanedTimeStamps = TimeUse(15:end);% manually selected
 
-CleanedTimeStamps = TimeStamps(15:end);
+CleanedTimeStamps = TimeStamps(15:end); %Temp later 15 is valid for specific data
 ShiftedTime = CleanedTimeStamps -TimeStamps(1,15);
-TimeUse = ShiftedTime(1:1+nnz(ShiftedTime < 2));
+TimeUse = ShiftedTime(1:1+nnz(ShiftedTime < 2)); % Need 2 sec in this case 
 
 
 %% generate the time vector for phase mean
 
 %TotalPhasePoint = length(CleanedTimeStamps)*PhaseDivision;
 s=1;
-PhaseTimeStamps =zeros(1,1);
+
+PhaseTimeStamps =zeros(length(TimeUse)*PhaseDivision,1);
 for j =1:PhaseDivision:((length(TimeUse)-1)*PhaseDivision)
     PhaseTimeStamps(j) = TimeUse(1,s);
     
