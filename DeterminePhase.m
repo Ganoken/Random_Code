@@ -48,5 +48,5 @@ s=1;
 PhaseTimeStamps =zeros(length(TimeUse)*PhaseDivision,1);
 for j =1:PhaseDivision:((length(TimeUse)-1)*PhaseDivision)
     PhaseTimeStamps(j) = TimeUse(1,s);
-    
+    s = s+1;
 end
