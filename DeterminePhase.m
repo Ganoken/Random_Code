@@ -51,8 +51,8 @@ for j =1:PhaseDivision:((length(TimeUse)-1)*PhaseDivision)
     PhaseDuration = (TimeUse(1,s+1)-TimeUse(1,s))/PhaseDivision;
     for k = 1:PhaseDivision-1
         PhaseTimeStamps(j+k) = PhaseTimeStamps(j+k-1)+PhaseDuration;
-        if PhaseTimeStamps(j+k) > 2
-            
+        if PhaseTimeStamps(j+k) >= 2
+            break
         end
     end    
     s = s+1;
