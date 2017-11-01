@@ -3,6 +3,7 @@
 
 %% initialize and load data
 Frequency = 100e3;%kHz sampling freq
+RawPData = csvread(''); %%Assuming the data is in csv format maybe use input
 DataCount = length(RawPData); % Get the # of Data 
 MaxT = DataCount/Frequency; % Get the duration of data
 TimeLine = 0:1/Frequency:MaxT-(1/Frequency); % Generate the time vactor for the Data
