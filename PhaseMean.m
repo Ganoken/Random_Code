@@ -34,7 +34,7 @@ for n = 1:numArrays
 end
 
 MeanImage = zeros(301,321,PhaseDivision);
-PhaseImage = zeros(301,321,700);
+PhaseImage = zeros(301,321,700); %700 is an arbitary number
 for j=1:PhaseDivision
     %k=1;
     m=1;
