@@ -18,7 +18,7 @@ for k=1:(length(TimeUse)-1)
         Phase(k,1,j) = pos;
         Phase(k,2,j) = nnz (x);
         pos = pos+nnz(x);
-        if pos > length(ImageTimeVector)
+        if pos >= length(ImageTimeVector)
             break
         end
         s = s+1;
