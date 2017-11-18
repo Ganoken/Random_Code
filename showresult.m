@@ -1,20 +1,14 @@
-%colormap hot
+
 load('../../Output/MeanImage/20170104L_75_on_1_201701_1147mean.mat')
-%for n = 1:numArrays
-%    FileName = ['../../LIF/BinarizeImage/20170104L_75_on_1_201701_1147' num2str(n,'%03u') '.mat'];
-%    BI{n} = load(FileName);
-%end
-%imagesc(MeanImage(:,:,1))
-%colorbar
-% for n=1:1
-%     FileName = ['../../Output/MeanImage/bmp/20170104L_75_on_1_201701_1147mean' num2str(n,'%02u') '.bmp']; % output file name
-%     imwrite(MeanImage(:,:,n),hot(256),FileName);  
-% end
+V = 0.0:0.1:1.0;
+X = 480:800;
+Y = 400:700;
 for n=1:32
-    %imagesc(MeanImage(:,:,n));
-    contourf(MeanImage(:,:,n))
+    contourf(X,Y,MeanImage(:,:,n),V)
+    set(gca, 'FontName','Times','FontSize',16 );
+    caxis([0 1]);
     colormap hot
-    colorbar
+    colorbar ('TickLabels', {'0.0', '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1.0'});
     FileName = ['../../Output/MeanImage/bmp/75on/Phase' num2str(n,'%02u') '.bmp'];
     saveas(gcf,FileName)
 end
