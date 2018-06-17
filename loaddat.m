@@ -1,5 +1,10 @@
-fid=fopen(sprintf('I:/ch0608/0608/try_120_p14_pwr.dat'),'r');
-%Pixels=1048576;
-%I=(fread(fid,Pixels,'uint16'));
-I=(fread(fid,'double'));
-fclose(fid);
+function [ OutputVector ] = loaddat( file,Pos,DataSize )
+%To load .dat file with given length
+%  20180530 Sujoy
+%Because this is used very frequent made it as functon.
+FileID=fopen(sprintf(file),'r');
+fseek(FileID,Pos,'bof');
+OutputVector=fread(FileID,DataSize,'uint16');
+fclose(FileID);
+end
+

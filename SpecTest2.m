@@ -5,5 +5,5 @@
  PData = 0.5*S;
  [pxx,f] = periodogram(S,hamming(length(S)),32768,Fs,'power');
  loglog(f,pxx,'-sr')
- %loglog(IT,ID,'-s', 'color', [0.3 0.6 0.7])
+ %loglog(f,pxx,'-s', 'color', [0.3 0.6 0.7])
  xlim([10 1000])
