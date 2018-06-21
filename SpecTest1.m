@@ -1,6 +1,6 @@
  S = xlsread('C:/Users/chakraborty.s.ab/Documents/lab/SujoyWork/exp/pres/20180618/pressure_10.xlsx','A2:A200001');
  Fs = 20e3;
- nfft = 200000;
+ nfft = 16384;
  n = length (S);
  %TimeLine = 0:1/Fs:10-(1/Fs);
 
