@@ -1,5 +1,6 @@
 %
-S = xlsread('C:/Users/chakraborty.s.ab/Documents/lab/SujoyWork/exp/pres/20180618/pressure_19.xlsx','A2:A200001');
+%S = xlsread('C:/Users/chakraborty.s.ab/Documents/lab/SujoyWork/exp/pres/20180618/pressure_19.xlsx','A2:A200001');
+S = xlsread('I:/pres/20180618/pressure_15.xlsx','A2:A200001');
 
 Frequency = 20e3;
 DataCount = length(S);
@@ -27,10 +28,10 @@ filtered = filtfilt(b,a,PData);
  
   scrsz=get(groot,'ScreenSize');
  figure('Position', [1 scrsz(2)/3 scrsz(3)/2 scrsz(4)/2]);
- %plot(TimeLineS,PData,'-r');
+ %plot(TimeLineS,PData,'-c');
  %plot(TimeLineS,PData,'-', 'color', [1 0.5 0]);
- plot(TimeLineS,filtered,'-r');
- % plot(TimeLineS,filtered,'-', 'color', [1 0.5 0]);
+ plot(TimeLineS,filtered,'-c');
+  %plot(TimeLineS,filtered,'-', 'color', [1 0.5 0]);
   ax = gca;
      ax.XAxisLocation = 'bottom';
      ax.YDir='normal';
@@ -39,13 +40,17 @@ filtered = filtfilt(b,a,PData);
      ax.YColor = 'black';
  %    ax.XScale = 'log';
  %    ax.YScale = 'log';
-     ax.XLim = [0 0.2];
+   %  ax.XLim = [0 0.2];
+     ax.XLim = [0 2];
     % ax.XLim = [30 300];
   %  ax.YLim = [10^-9 10^-2];
-% %     ax.XTickMode = 'manual';
-% %     ax.YTickMode = 'manual';
-% %     ax.XTick = 30^0:30^2;
-% %     ax.YTick = 10^-11:10^-3;
+  ax.YLim = [-0.06 0.06];
+     %ax.XTickMode = 'manual';
+     ax.YTickMode = 'manual';
+     xtickformat('%.2f')
+     ytickformat('%.2f')
+     %ax.XTick = 0:0.05:0.20;
+     ax.YTick = -0.06:0.02:0.06;
   %   ax.TickDir = 'in';
 % %     ax.TickLength = [0.02 0.035];
 % %     ax.XMinorTick = 'on';
@@ -61,8 +66,8 @@ filtered = filtfilt(b,a,PData);
 % 
 % %     c.Position = [0.31 0.405 0.01 0.225];
 %  
-     xlabel('\it \fontname{Times New Roman}T \rm[Sec]');
-     ylabel('\it \fontname{Times New Roman}kHz ');
+     xlabel('\it \fontname{Times New Roman}t \rm[sec]');
+     ylabel('\it \fontname{Times New Roman}p` \rm[kPa] ');
 %  
  %select legend
 %  legend('off','50Hz','60Hz','70Hz','80Hz','90Hz','100Hz','110Hz','120Hz','Location','Northeast');
