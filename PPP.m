@@ -1,6 +1,6 @@
 %
-%S = xlsread('C:/Users/chakraborty.s.ab/Documents/lab/SujoyWork/exp/pres/20180618/pressure_19.xlsx','A2:A200001');
-S = xlsread('I:/pres/20180618/pressure_15.xlsx','A2:A200001');
+S = xlsread('C:/Users/chakraborty.s.ab/Documents/lab/SujoyWork/exp/pres/20180618/pressure_12.xlsx','A2:A200001');
+%S = xlsread('I:/pres/20180618/pressure_15.xlsx','A2:A200001');
 
 Frequency = 20e3;
 DataCount = length(S);
@@ -13,7 +13,7 @@ windowSize = 20;
 b = (1/windowSize)*ones(1,windowSize);
 a = 1;
 filtered = filtfilt(b,a,PData);
-
+filtered2 = filtfilt(b,a,0.5*S);
 %[Peaks,TimeStamps] = findpeaks(filtered,TimeLine,'MinPeakDistance',0.01);
 
  %Fs = 20e3;
@@ -30,7 +30,7 @@ filtered = filtfilt(b,a,PData);
  figure('Position', [1 scrsz(2)/3 scrsz(3)/2 scrsz(4)/2]);
  %plot(TimeLineS,PData,'-c');
  %plot(TimeLineS,PData,'-', 'color', [1 0.5 0]);
- plot(TimeLineS,filtered,'-c');
+ plot(TimeLine,filtered2,'-k');
   %plot(TimeLineS,filtered,'-', 'color', [1 0.5 0]);
   ax = gca;
      ax.XAxisLocation = 'bottom';
@@ -41,7 +41,7 @@ filtered = filtfilt(b,a,PData);
  %    ax.XScale = 'log';
  %    ax.YScale = 'log';
    %  ax.XLim = [0 0.2];
-     ax.XLim = [0 2];
+     ax.XLim = [0 10];
     % ax.XLim = [30 300];
   %  ax.YLim = [10^-9 10^-2];
   ax.YLim = [-0.06 0.06];
