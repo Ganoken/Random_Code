@@ -1,6 +1,6 @@
 %
-S = xlsread('C:/Users/chakraborty.s.ab/Documents/lab/SujoyWork/exp/pres/20180618/pressure_12.xlsx','A2:A200001');
-%S = xlsread('I:/pres/20180618/pressure_15.xlsx','A2:A200001');
+%S = xlsread('C:/Users/chakraborty.s.ab/Documents/lab/SujoyWork/exp/pres/20180618/pressure_12.xlsx','A2:A200001');
+S = xlsread('I:/pres/20180618/pressure_19.xlsx','A2:A200001');
 
 Frequency = 20e3;
 DataCount = length(S);
@@ -30,8 +30,8 @@ filtered2 = filtfilt(b,a,0.5*S);
  figure('Position', [1 scrsz(2)/3 scrsz(3)/2 scrsz(4)/2]);
  %plot(TimeLineS,PData,'-c');
  %plot(TimeLineS,PData,'-', 'color', [1 0.5 0]);
- plot(TimeLine,filtered2,'-k');
-  %plot(TimeLineS,filtered,'-', 'color', [1 0.5 0]);
+ plot(TimeLine,filtered2,'-r');
+  %plot(TimeLine,filtered2,'-', 'color', [0.6 0.6 0.5]);
   ax = gca;
      ax.XAxisLocation = 'bottom';
      ax.YDir='normal';
