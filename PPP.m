@@ -1,6 +1,6 @@
 %
-%S = xlsread('C:/Users/chakraborty.s.ab/Documents/lab/SujoyWork/exp/pres/20180618/pressure_12.xlsx','A2:A200001');
-S = xlsread('I:/pres/20180618/pressure_19.xlsx','A2:A200001');
+S = xlsread('C:/Users/chakraborty.s.ab/Documents/lab/SujoyWork/exp/pres/20180618/pressure_12.xlsx','A2:A200001');
+%S = xlsread('I:/pres/20180618/pressure_19.xlsx','A2:A200001');
 
 Frequency = 20e3;
 DataCount = length(S);
@@ -13,24 +13,32 @@ windowSize = 20;
 b = (1/windowSize)*ones(1,windowSize);
 a = 1;
 filtered = filtfilt(b,a,PData);
-filtered2 = filtfilt(b,a,0.5*S);
+%filtered2 = filtfilt(b,a,0.5*S);
 %[Peaks,TimeStamps] = findpeaks(filtered,TimeLine,'MinPeakDistance',0.01);
 
- %Fs = 20e3;
- %nfft = 16384;
+ Fs = 20e3;
+ nfft = 16384; %
  %[pxx, f] = pwelch(PData,kaiser(nfft,0.5),[],nfft,Fs,'power');
- %[pxxf, ff] = pwelch(filtered,kaiser(nfft,0.5),[],nfft,Fs,'power');
+ [pxxf, ff] = pwelch(filtered,kaiser(nfft,0.5),[],nfft,Fs,'power');
+ 
+% scrsz=get(groot,'ScreenSize');
+ %figure('Position', [1 scrsz(2)/3 scrsz(3)/2 scrsz(4)/2]);
+ 
+  %loglog(ff,pxxf,'-c')
+ % loglog(ff,pxxf,'-', 'color',  [1 0.5 0])
+ %loglog(ff,pxxf,'-', 'color',  [0.6 0.6 0.5])  
+ loglog(ff,pxxf,'-', 'color', [0.3 0.6 0.7])
  
  %z=zeros(1,8193);
  %z=z-0.4;
  %plot3(ff,pxxf,z,'-k')
  %plot3(ff,pxxf,z,'-','color', [1 0.5 0])
  
-  scrsz=get(groot,'ScreenSize');
- figure('Position', [1 scrsz(2)/3 scrsz(3)/2 scrsz(4)/2]);
+%   scrsz=get(groot,'ScreenSize');
+%  figure('Position', [1 scrsz(2)/3 scrsz(3)/2 scrsz(4)/2]);
  %plot(TimeLineS,PData,'-c');
  %plot(TimeLineS,PData,'-', 'color', [1 0.5 0]);
- plot(TimeLine,filtered2,'-r');
+ %plot(TimeLine,filtered2,'-r');
   %plot(TimeLine,filtered2,'-', 'color', [0.6 0.6 0.5]);
   ax = gca;
      ax.XAxisLocation = 'bottom';
@@ -38,19 +46,19 @@ filtered2 = filtfilt(b,a,0.5*S);
      ax.YAxisLocation = 'left';
      ax.XColor = 'black';
      ax.YColor = 'black';
- %    ax.XScale = 'log';
- %    ax.YScale = 'log';
+     ax.XScale = 'log';
+     ax.YScale = 'log';
    %  ax.XLim = [0 0.2];
-     ax.XLim = [0 10];
-    % ax.XLim = [30 300];
-  %  ax.YLim = [10^-9 10^-2];
-  ax.YLim = [-0.06 0.06];
+     %ax.XLim = [0 10];
+     ax.XLim = [30 300];
+    ax.YLim = [10^-9 10^-2];
+  %ax.YLim = [-0.06 0.06];
      %ax.XTickMode = 'manual';
-     ax.YTickMode = 'manual';
-     xtickformat('%.2f')
-     ytickformat('%.2f')
+     %ax.YTickMode = 'manual';
+     %xtickformat('%.2f')
+     %ytickformat('%.2f')
      %ax.XTick = 0:0.05:0.20;
-     ax.YTick = -0.06:0.02:0.06;
+     %ax.YTick = -0.06:0.02:0.06;
   %   ax.TickDir = 'in';
 % %     ax.TickLength = [0.02 0.035];
 % %     ax.XMinorTick = 'on';
@@ -66,8 +74,8 @@ filtered2 = filtfilt(b,a,0.5*S);
 % 
 % %     c.Position = [0.31 0.405 0.01 0.225];
 %  
-     xlabel('\it \fontname{Times New Roman}t \rm[sec]');
-     ylabel('\it \fontname{Times New Roman}p` \rm[kPa] ');
+     xlabel('\it \fontname{Times New Roman} \rm[Hz]');
+     ylabel('\it \fontname{Times New Roman}power ');
 %  
  %select legend
 %  legend('off','50Hz','60Hz','70Hz','80Hz','90Hz','100Hz','110Hz','120Hz','Location','Northeast');
