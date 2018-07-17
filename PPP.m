@@ -7,8 +7,10 @@ DataCount = length(S);
 MaxT = DataCount/Frequency;
 TimeLine = 0:1/Frequency:MaxT-(1/Frequency);
 
-PData = 0.5*S(1:40000);
+PData = 0.5*S;
+%PData = 0.5*S(1:40000);
 TimeLineS = TimeLine(1:40000);
+
 windowSize = 20; 
 b = (1/windowSize)*ones(1,windowSize);
 a = 1;
@@ -21,12 +23,12 @@ filtered = filtfilt(b,a,PData);
  %[pxx, f] = pwelch(PData,kaiser(nfft,0.5),[],nfft,Fs,'power');
  [pxxf, ff] = pwelch(filtered,kaiser(nfft,0.5),[],nfft,Fs,'power');
  
-% scrsz=get(groot,'ScreenSize');
- %figure('Position', [1 scrsz(2)/3 scrsz(3)/2 scrsz(4)/2]);
+ scrsz=get(groot,'ScreenSize');
+ figure('Position', [1 scrsz(2)/3 scrsz(3)/2 scrsz(4)/2]);
  
-  %loglog(ff,pxxf,'-c')
- % loglog(ff,pxxf,'-', 'color',  [1 0.5 0])
- %loglog(ff,pxxf,'-', 'color',  [0.6 0.6 0.5])  
+ % loglog(ff,pxxf,'-c')
+%  loglog(ff,pxxf,'-', 'color',  [1 0.5 0])
+% loglog(ff,pxxf,'-', 'color',  [0.6 0.6 0.5])  
  loglog(ff,pxxf,'-', 'color', [0.3 0.6 0.7])
  
  %z=zeros(1,8193);
@@ -51,7 +53,7 @@ filtered = filtfilt(b,a,PData);
    %  ax.XLim = [0 0.2];
      %ax.XLim = [0 10];
      ax.XLim = [30 300];
-    ax.YLim = [10^-9 10^-2];
+    ax.YLim = [10^-9 10^-3];
   %ax.YLim = [-0.06 0.06];
      %ax.XTickMode = 'manual';
      %ax.YTickMode = 'manual';
