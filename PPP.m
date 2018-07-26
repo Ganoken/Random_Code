@@ -52,7 +52,7 @@ filtered = filtfilt(b,a,PData);
      ax.YScale = 'log';
    %  ax.XLim = [0 0.2];
      %ax.XLim = [0 10];
-     ax.XLim = [30 300];
+     ax.XLim = [30 200];
     ax.YLim = [10^-9 10^-3];
   %ax.YLim = [-0.06 0.06];
      %ax.XTickMode = 'manual';
@@ -77,7 +77,7 @@ filtered = filtfilt(b,a,PData);
 % %     c.Position = [0.31 0.405 0.01 0.225];
 %  
      xlabel('\it \fontname{Times New Roman} \rm[Hz]');
-     ylabel('\it \fontname{Times New Roman}power ');
+     ylabel('\it \fontname{Times New Roman}p ');
 %  
  %select legend
 %  legend('off','50Hz','60Hz','70Hz','80Hz','90Hz','100Hz','110Hz','120Hz','Location','Northeast');
